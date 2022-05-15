@@ -22,12 +22,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <script src="./Js/register.js"></script>
+    <script src="./main.js"></script>
 
-    <link rel="stylesheet" href="./Css/register.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <img src="./Image/background-login.png" alt="" id="bg">
+    <img src="./Image/background-login.png" alt="" id="bg-login">
     <div class="register-form">
         <div class="title">Chào mừng đến <?= Title ?>!</div>
         <div class="item">
