@@ -171,27 +171,35 @@
             return;
         }
         $account_exist = db_select('customer', "`user` = '". $_POST['user'] . "'");
+
         if (count($account_exist) == 0)
         {
             echo json_encode(array(
                 'status' => false,
-                'message' => 'Tài khoản hoặc mật khẩu không chính xác',
+                'message' => 'Tài khoản không tồn tại',
                 'data' => ''
             ));
             return;
         }
 
-        $account_exist = db_select('abnormal', "`customer_id` = '". $_POST['user'] . "'");
-        if (count($account_exist) >= 3 && count($account_exist) < 6)
+        $account_abnormal = db_select('abnormal', "`customer_id` = '". $_POST['user'] . "' ORDER BY `date_created` DESC");
+        if (count($account_abnormal) >= 3 && count($account_abnormal) < 6)
         {
-            echo json_encode(array(
-                'status' => false,
-                'message' => 'Tài khoản của bạn đã bị khóa tạm thời. Vui lòng chờ 1 phút và thực hiện lại',
-                'data' => ''
-            ));
-            return;
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+            $time_current = date('Y-m-d H:i:s');
+            $time_final = oneMinuteIncrease($account_abnormal[0]['date_created']);
+
+            if ($time_current <= $time_final)
+            {
+                echo json_encode(array(
+                    'status' => false,
+                    'message' => 'Tài khoản của bạn đã bị khóa tạm thời. Vui lòng chờ 1 phút và thực hiện lại',
+                    'data' => ''
+                ));
+                return;
+            }
         }
-        if (count($account_exist) == 6) {
+        if (count($account_abnormal) == 6) {
             echo json_encode(array(
                 'status' => false,
                 'message' => 'Tài khoản của bạn đã bị khóa vĩnh viễn. Vui lòng liên hệ Admin để mở khóa tài khoản',
@@ -200,7 +208,6 @@
             return;
         }
 
-        
         if ($account_exist[0]['pass'] != md5($_POST['pass']))
         {
             db_insert('abnormal', array(
@@ -215,6 +222,8 @@
         }
 
         $_SESSION['user'] = $_POST['user'];
+
+        db_delete('abnormal', "`customer_id` = '". $account_exist[0]['id'] . "'");
         
         echo json_encode(array(
             'status' => true,
@@ -257,5 +266,19 @@
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    function oneMinuteIncrease($date)
+    {
+        $date = array(
+            'Y' => date('Y', strtotime($date)),
+            'm' => date('m', strtotime($date)),
+            'd' => date('d', strtotime($date)),
+            'H' => date('H', strtotime($date)),
+            'i' => date('i', strtotime($date)),
+            's' => date('s', strtotime($date)),
+        );
+        $date_1minute = mktime($date['H'], ($date['i'] + 1), $date['s'], $date['m'], $date['d'], $date['Y']);
+        return date('Y-m-d H:i:s', $date_1minute);
     }
 ?>

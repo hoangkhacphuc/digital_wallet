@@ -7,6 +7,6 @@
     define('DB_Pass', '');
 
     define('Title', 'Kamen Rider Pay');
-    define('Mail_Email', '< EMAIL >');
-    define('Mail_Pass', '< Pass >');
+    define('Mail_Email', 'kenplaygirl@gmail.com');
+    define('Mail_Pass', 'Kenplaygirl2402hoangkhacphuc');
 ?>
