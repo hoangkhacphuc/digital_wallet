@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 100%;
+}
+
+#bg {
+    object-fit: cover;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    margin-top: -30px;
+}
+
+.register-form {
+    width: 50%;
+    max-width: 500px;
+    margin: 30px auto;
+    background-color: rgba(204, 204, 204, 0.418);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.register-form > .title {
+    font-size: 24px;
+    font-weight: 600px;
+    padding-bottom: 20px;
+    color: #fff;
+}
+
+.register-form > .item {
+    width: 100%;
+    display: flex;
+    padding-bottom: 15px;
+    align-items: center;
+}
+
+.register-form > .item > input {
+    padding: 13px 16px;
+    font-size: 16px;
+    outline: 0;
+    background-color: #E8F0FE;
+    border: 1px solid rgba(226,216,238,.3);
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+    width: 100%;
+}
+
+.register-form > .item > input[type = "date"]
+{
+    padding: 12px 16px;
+}
+
+.register-form > .item > input[type = "file"]
+{
+    display: none;
+}
+
+.register-form > .item > label {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border: 1px dashed #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.register-form > .item > label > span {
+    font-size: 18px;
+    text-align: center;
+}
+
+.register-form > .item > label > img {
+    object-fit: cover;
+    height: 180px;
+    width: 100%;
+}
+
+.register-form > .item > i {
+    width: 40px;
+    padding: 12px 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #FF9800;
+    background-color: #E8F0FE;
+    border: 1px solid rgba(226,216,238,.3);
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+}
+
+.register-form > p {
+    text-align: center;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.register-form > p > a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #1900fdbd;
+}
+
+.register-form > p > label {
+    width: 5px;
+    height: 5px;
+    margin-top: 7px;
+    background-color: #FF9800;
+    border-radius: 50%;
+}
+
+.register-form > .btn {
+    padding: 20px;
+    text-align: center;
+}
+
+.register-form > .btn > button {
+    padding: 7px 40px;
+    border: 1px solid #A1C9F1;
+    background-color: #A1C9F1;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+::-webkit-calendar-picker-indicator {
+    display: none;
+}
