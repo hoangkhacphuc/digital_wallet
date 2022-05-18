@@ -2,11 +2,11 @@
 
     // Config database
 
-    define('DB_Name', 'digital_wallet');
-    define('DB_User', 'root');
-    define('DB_Pass', '');
+    define('DB_Name', 'digital_wallet'); // Tên database
+    define('DB_User', 'root'); // Tài khoản MySQL
+    define('DB_Pass', ''); // Mật khẩu MySQL
 
-    define('Title', 'Kamen Rider Pay');
-    define('Mail_Email', '');
-    define('Mail_Pass', '');
+    define('Title', 'Kamen Rider Pay'); // Tên của trang web
+    define('Mail_Email', 'kenplaygirl@gmail.com'); // NHẬP EMAIL VÀO ĐÂY
+    define('Mail_Pass', ''); // NHẬP PASS CỦA EMAIL VÀO ĐÂY
 ?>

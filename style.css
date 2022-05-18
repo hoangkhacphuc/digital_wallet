@@ -7,6 +7,7 @@
 
 body {
     width: 100%;
+    background-color: #EBEBFA;
 }
 
 /* --------------------- START CSS IN LOGIN PAGE --------------------- */
@@ -226,3 +227,735 @@ body {
 
 /* --------------------- END CSS IN REGISTER PAGE --------------------- */
 
+/* --------------------- START CSS IN HEADER --------------------- */
+
+header {
+    background: url('./Image/bg-header.jpg') no-repeat center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+}
+
+header > .left {
+    display: flex;
+}
+
+header > .left > a {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+header > .left > a > i {
+    font-size: 30px;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+header > .left > a > span {
+    padding-top: 15px;
+    text-transform: uppercase;
+}
+
+header > .left > a:hover {
+    background-color: #cccccc4d;
+}
+
+header > .right {
+    
+}
+
+header > .right > span {
+    color: #fff;
+    font-size: 18px;
+    padding-right: 30px;
+}
+
+header > .right > span > i {
+    padding-right: 10px;
+}
+
+header > .right > a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    border: 1px solid #fff;
+    padding: 10px;
+}
+
+header > .right > a > i {
+    padding-left: 10px;
+}
+
+header > .right > span > span::after {
+    content: ' VNĐ';
+}
+
+header > .right > a:hover {
+    background-color: #cccccc4d;
+}
+
+/* --------------------- END CSS IN HEADER --------------------- */
+
+/* --------------------- START CSS IN FOOTER --------------------- */
+
+footer {
+    width: 100%;
+    background-color: #fff;
+    padding: 30px 7%;
+}
+
+footer > .row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: row nowrap;
+    gap: 20px;
+}
+
+footer > .row > .col {
+    width: 25%;
+    display: flex;
+    flex-flow: column;
+}
+
+footer > .row > .col > a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #42236a;
+    padding-bottom: 10px;
+}
+
+footer > .row > .col:last-child {
+    flex-flow: row nowrap;
+    gap: 20px;
+}
+
+footer > .row > .col:last-child > a {
+    width: 50%;
+}
+
+footer > .row > .col:last-child > a > img {
+    width: 100%;
+    object-fit: cover;
+}
+
+footer > .row > .col:first-child > a {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+footer > .row > .copyright {
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    color: #ad8ad8;
+    padding-top: 20px;
+}
+
+/* --------------------- END CSS IN FOOTER --------------------- */
+
+
+/* --------------------- START CSS IN INFORMATION PAGE --------------------- */
+
+.path {
+    padding: 30px 7%;
+    font-size: 20px;
+    font-weight: 600;
+    color: #444;
+}
+
+.information {
+    width: 100%;
+    padding: 0 7%;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.information > .basic {
+    padding: 20px 30px;
+    border: 1px solid #ad8ad8;
+    display: inline-block;
+    border-radius: 5px;
+    color: #42236a;
+    background-color: #fff;
+    text-align: start;
+    min-width: 400px;
+}
+
+.information > .basic > .full_name {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.information > .basic > .user {
+    font-size: 16px;
+    padding:  10px 0 20px 0;
+}
+
+.information > .basic > .surplus {
+    font-size: 24px;
+}
+
+.information > .basic > .surplus::after {
+    content: ' VNĐ';
+}
+
+.information > .basic > .link_history {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.information > .basic > .link_history > a {
+    text-decoration: none;
+    color: #FF9800;
+}
+
+.information > .detail {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    margin-top: 50px;
+    gap: 5px
+}
+
+.information > .detail > .left {
+    background-color: #fff;
+    padding: 20px 30px;
+    border: none;
+    border-radius: 20px 0 0 20px;
+    width: 50%;
+}
+
+.information > .detail > .left > .item {
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}
+
+.information > .detail > .left > .item:last-child {
+    border: none;
+}
+
+.information > .detail > .left > .item > .title {
+    color: #ad8ad8;
+    padding-bottom: 15px;
+}
+
+.information > .detail > .left > .item > span {
+    font-size: 16px;
+}
+
+.information > .detail > .left > .item > span.full-name {
+    text-transform: uppercase;
+}
+
+.information > .detail > .right {
+    background-color: #fff;
+    padding: 20px 30px;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    width: 50%;
+}
+
+.information > .detail > .right > .item {
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}
+
+.information > .detail > .right > .item:last-child {
+    border: none;
+}
+
+.information > .detail > .right > .item > .title {
+    color: #ad8ad8;
+    padding-bottom: 15px;
+}
+
+.information > .detail > .right > .item > .cmnd {
+    width: 100%;
+}
+
+.information > .detail > .right > .item > .cmnd > input {
+    display: none;
+}
+
+.information > .detail > .right > .item > .cmnd > label {
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.information > .detail > .right > .item > .cmnd > label > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.information > .detail > .right > .item > .cmnd > label > .noti {
+    position: absolute;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.information > .detail > .right > .item > .cmnd > label > .noti > span {
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ad8ad8;
+    border: 1px solid #ad8ad8;
+}
+
+.information > .detail > .right > .item > .cmnd > label > .noti > span.verified {
+    color: #fff;
+    background-color: #149730;
+    border: 1px solid #149730;
+}
+
+.information > .detail > .right > .item > .cmnd > label > .noti > span.not-verified {
+    color: #fff;
+    background-color: #af2525;
+    border: 1px solid #af2525;
+}
+
+.information > .detail > .right > .item > .btn-update-cmnd {
+    background-color: #0e972c;
+    margin: auto;
+    padding: 10px 30px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* --------------------- END CSS IN INFORMATION PAGE --------------------- */
+
+/* --------------------- START CSS IN WITHDRAW MONEY PAGE --------------------- */
+
+.withdraw-money {
+    width: 100%;
+    padding: 0 7%;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.withdraw-money > .basic {
+    padding: 20px 30px;
+    border: 1px solid #ad8ad8;
+    display: inline-block;
+    border-radius: 5px;
+    color: #42236a;
+    background-color: #fff;
+    text-align: start;
+    min-width: 400px;
+}
+
+.withdraw-money > .basic > p {
+    font-size: 14px;
+    color: #ad8ad8;
+}
+
+.withdraw-money > .basic > .user {
+    font-size: 16px;
+    padding:  10px 0;
+}
+
+.withdraw-money > .basic > .surplus {
+    font-size: 24px;
+}
+
+.withdraw-money > .basic > .surplus::after {
+    content: ' VNĐ';
+}
+
+.withdraw-money > .inp {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.withdraw-money > .inp > input {
+    width: 370px;
+    padding: 11px;
+    font-size: 16px;
+    color: #42236a;
+    outline: 0;
+    background-color: #fff;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ad8ad8;
+    border-right: none;
+}
+
+.withdraw-money > .inp > input[type=date] {
+    padding: 10px 11px;
+    color: #42236a;
+}
+
+.withdraw-money > .inp > input[type=number]::-webkit-inner-spin-button, 
+.withdraw-money > .inp > input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+.withdraw-money > .inp > label {
+    width: 30px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff9800;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ad8ad8;
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+    cursor: pointer;
+}
+
+.withdraw-money > .list {
+    width: 400px;
+    margin: 20px auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.withdraw-money > .list > .item {
+    border: 1px solid #ad8ad8;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    width: calc(33.33% - 12.5px);
+    cursor: pointer;
+}
+
+.withdraw-money > .list > .item:hover {
+    background-color: #ad8ad84d;
+}
+
+.withdraw-money > .note,
+.withdraw-money > .total {
+    width: 100%;
+    text-align: center;
+}
+
+.withdraw-money > .note > input,
+.withdraw-money > .total > input {
+    border: 1px solid #ad8ad8;
+    border-radius: 5px;
+    padding: 10px;
+    width: 400px;
+    outline: 0;
+}
+
+.withdraw-money > .total {
+    margin: 20px 0;
+}
+
+.withdraw-money > .btn {
+    width: 100%;
+    text-align: center;
+}
+
+.withdraw-money > .btn > button {
+    outline: 0;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: #42236a;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* --------------------- END CSS IN WITHDRAW MONEY PAGE --------------------- */
+
+/* --------------------- START CSS IN HISTORY PAGE --------------------- */
+
+.history {
+    padding: 30px 7%;
+    width: 100%;
+    display: flex;
+}
+
+.history > .left {
+    width: 40%;
+}
+
+.history > .left > .item {
+    background-color: #fff;
+    border: none;
+    border-left: 5px solid #26d416;
+    border-radius: 3px 0 0 3px;
+    padding: 10px;
+    height: 100px;
+    width: 40%;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.history > .left > .item:nth-child(2) {
+    border-left: 5px solid #d46b16;
+}
+
+.history > .left > .item:nth-child(3) {
+    border-left: 5px solid #15b3e4;
+}
+
+.history > .left > .item:nth-child(4) {
+    border-left: 5px solid #d41616;
+}
+
+.history > .left > .item > .title {
+    font-size: 14px;
+    color:#42236a;
+}
+
+.history > .left > .item > .money {
+    font-size: 16px;
+    color: #ad8ad8;
+    margin-top: 15px;
+}
+
+.history > .left > .item > .money::after {
+    content: ' VNĐ';
+}
+
+.history > .right {
+    width: 60%;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.history > .right > .title {
+    font-size: 20px;
+    color:#f77308;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ad8ad8;
+    margin-bottom: 20px;
+}
+
+.history > .right > .list {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.history > .right > .list > .item {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.history > .right > .list > p.not-found-history {
+    text-align: center;
+    color: #777;
+}
+
+.history > .right > .list > .item:last-child {
+    border: none;
+}
+
+.history > .right > .list > .item > .col:first-child {
+    width: 60%;
+}
+
+.history > .right > .list > .item > .col:first-child > .date {
+    font-size: 16px;
+    color: #42236a;
+    padding-bottom: 10px;
+}
+
+.history > .right > .list > .item > .col:first-child > .date::before {
+    content: 'Ngày : ';
+}
+
+.history > .right > .list > .item > .col:first-child > .note {
+    font-size: 14px;
+    color: #ad8ad8;
+}
+
+.history > .right > .list > .item > .col:nth-child(2),
+.history > .right > .list > .item > .col:nth-child(3) {
+    width: 20%;
+}
+
+.history > .right > .list > .item > .col > .add {
+    font-size: 16px;
+    font-weight: 600;
+    color: #26d416;
+}
+
+.history > .right > .list > .item > .col > .add::before {
+    content: '+ ';
+}
+
+.history > .right > .list > .item > .col > .sub {
+    font-size: 16px;
+    font-weight: 600;
+    color: #af2525;
+}
+
+.history > .right > .list > .item > .col > .sub::before {
+    content: '- ';
+}
+
+.history > .right > .list > .item > .col >.status {
+    font-size: 16px;
+    color: #FF9800;
+}
+
+.history > .right > .list > .item > .col > .status.ok {
+    color: #26d416;
+}
+
+.history > .right > .list > .item > .col > .status.no {
+    color: red;
+}
+
+.history > .right > .list > .item > .col > .action {
+    font-size: 12px;
+    color: #faa200;
+    padding-top: 10px;
+}
+
+/* --------------------- END CSS IN HISTORY PAGE --------------------- */
+
+/* --------------------- START CSS IN ADMIN - CMND PAGE --------------------- */
+
+.cmnd {
+    padding: 30px 7%;
+    width: 100%;
+}
+
+.cmnd > .list {
+    width: 100%;
+    padding: 30px;
+    background-color: #fff;
+    display: flex;
+    flex-flow: row wrap;
+    min-height: 500px;
+    max-height: 1000px;
+    overflow: hidden;
+    overflow-y: auto;
+    gap: 20px;
+}
+
+.cmnd > .list > .item {
+    width: calc(33.33% - 15px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 170px;
+}
+
+.cmnd > .list > .item > .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cmnd > .list > .item > .top > .user_id {
+    font-size: 16px;
+    color: #ad8ad8;
+    padding: 10px 15px;
+}
+
+.cmnd > .list > .item > .top > .user_id::before {
+    content: 'ID : ';
+    color: #42236a;
+    font-weight: 600;
+}
+
+.cmnd > .list > .item > .top > .btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cmnd > .list > .item > .top > .btn > .agree {
+    background-color: #119e2f;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.cmnd > .list > .item > .top > .btn > .cancel {
+    background-color: #be2020;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.cmnd > .list > .item > .bottom {
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.cmnd > .list > .item > .bottom > img {
+    width: calc(50% - 5px);
+    object-fit: cover;
+}
+
+.cmnd > .list > p.not-found-cmnd {
+    width: 100%;
+    text-align: center;
+    color: #777;
+}
+
+/* --------------------- END CSS IN ADMIN - CMND PAGE --------------------- */
+
+/* --------------------- START CSS IN ADMIN - WITHDRAWAL MANAGEMENT PAGE --------------------- */
+
+.cmnd > .list > .item > .bottom > table {
+    width: 100%;
+}
+
+.cmnd > .list > .item > .bottom > table > tbody > tr > td {
+    font-size: 14px;
+    padding: 2px;
+}
+
+.cmnd > .list > .item > .bottom > table > tbody > tr:nth-child(4) > td:last-child::after {
+    content: ' VNĐ';
+}
+
+/* --------------------- END CSS IN ADMIN - WITHDRAWAL MANAGEMENT PAGE --------------------- */

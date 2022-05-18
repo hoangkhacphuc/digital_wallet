@@ -1,8 +1,8 @@
 <?php
     function sendMailTo($name, $mailTo,$noidung, $tieude)
     {
-        include('class.smtp.php');
-        include "class.phpmailer.php"; 
+        include('./Lib/PHPMailer/class.smtp.php');
+        include "./Lib/PHPMailer/class.phpmailer.php"; 
         $nFrom = Title;    //mail duoc gui tu dau, thuong de ten cong ty ban
         $mFrom = Mail_Email;  //dia chi email cua ban 
         $mPass = Mail_Pass;       //mat khau email cua ban
