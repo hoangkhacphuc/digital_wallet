@@ -43,6 +43,7 @@
         <div class="left">
             <a href="./"><span style="padding: 10px">Quản lý CMND</span></a>
             <a href="./withdrawal_management.php"><span style="padding: 10px">Quản lý rút tiền</span></a>
+            <a href="./unlock.php"><span style="padding: 10px">Mở Khóa Tài Khoản</span></a>
         </div>
         <div class="right">
             <span>ADMIN</span>

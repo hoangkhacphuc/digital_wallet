@@ -387,4 +387,37 @@ $(document).ready(function () {
     });
 
     // --------------------- END JS IN ADMIN- WITHDRAWAL MANAGEMENT PAGE ---------------------
+
+    // --------------------- START JS IN ADMIN- UNLOCK PAGE ---------------------
+    
+    $('.unlock>.list>.item>.top>.btn>#unlock-agree').click(function () { 
+        let id = $(this).parent().parent().parent().attr('id');
+        id = parseInt(id.slice(3, id.length));
+
+        let data = new FormData();
+        data.append('id', id);
+
+        $.ajax({
+            type: "POST",
+            url: "../backend.php?API=Unlock",
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                let json = JSON.parse(response);
+                if (json['status'])
+                {
+                    toastr.success(json['message'], 'Thông báo');
+                    $('#id_' + id).remove();
+                }
+                else toastr.error(json['message'], 'Thông báo');
+            },
+            error: function () {
+                toastr.error('Xảy ra lỗi trong quá trình truyền tin', 'Thông báo');
+            }
+        });
+    });
+
+    // --------------------- END JS IN ADMIN- UNLOCK PAGE ---------------------
+
 });

@@ -48,7 +48,7 @@
             </div>
             <div class="item">
                 <div class="title">Địa chỉ</div>
-                <span>Hà Nội</span>
+                <span><?= $info['address'] ?></span>
             </div>
         </div>
         <div class="right">

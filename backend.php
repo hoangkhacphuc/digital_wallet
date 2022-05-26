@@ -212,9 +212,10 @@
 
         if ($account_exist[0]['pass'] != md5($_POST['pass']))
         {
-            db_insert('abnormal', array(
-                'customer_id' => $account_exist[0]['id'],
-            ));
+            if ((int)$account_exist[0]['user_type'] != 1)
+                db_insert('abnormal', array(
+                    'customer_id' => $account_exist[0]['id'],
+                ));
             echo json_encode(array(
                 'status' => false,
                 'message' => 'Tài khoản hoặc mật khẩu không chính xác',
@@ -589,6 +590,45 @@
         ));
     }
 
+    function API_Unlock()
+    {
+        if (!isLogin())
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Vui lòng đăng nhập và thực hiện lại',
+                'data' => ''
+            ));
+            return;
+        }
+        if (!isAdmin())
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Không có quyền truy cập',
+                'data' => ''
+            ));
+            return;
+        }
+        if (!isset($_POST['id']))
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Vui lòng cung cấp id',
+                'data' => ''
+            ));
+            return;
+        }
+
+        db_delete('abnormal', "`customer_id` = '". $_POST['id'] . "'");
+        
+        echo json_encode(array(
+            'status' => true,
+            'message' => 'Mở khóa thành công',
+            'data' => ''
+        ));
+    }
+
     function getInformation() {
         if (!isLogin())
             return;
@@ -648,6 +688,15 @@
         $user = $_SESSION['user'];
         $info = db_select_query("SELECT * FROM withdraw_money WHERE customer_id = '$user' ORDER BY date_created DESC LIMIT 50;");
         return $info;
+    }
+
+    function getListLocked() {
+        if (!isLogin())
+            return array();
+        if (!isAdmin())
+            return array();
+        $account_locked = db_select_query("SELECT c.id, c.user, c.full_name, c.email, c.phone_number FROM abnormal as a, customer as c, (SELECT COUNT(id) as NUM, customer_id FROM abnormal GROUP BY customer_id) as m WHERE m.NUM > 5 AND a.customer_id = m.customer_id AND a.customer_id = c.id GROUP BY a.customer_id;");
+        return $account_locked;
     }
 
     function isEmail($email) {

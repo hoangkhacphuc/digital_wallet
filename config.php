@@ -7,6 +7,6 @@
     define('DB_Pass', ''); // Mật khẩu MySQL
 
     define('Title', 'Kamen Rider Pay'); // Tên của trang web
-    define('Mail_Email', 'kenplaygirl@gmail.com'); // NHẬP EMAIL VÀO ĐÂY
+    define('Mail_Email', ''); // NHẬP EMAIL VÀO ĐÂY
     define('Mail_Pass', ''); // NHẬP PASS CỦA EMAIL VÀO ĐÂY
 ?>

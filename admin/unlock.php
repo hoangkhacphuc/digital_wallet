@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QL Rút Tiền | <?= Title ?></title>
+    <title>Mở Khóa Tài Khoản | <?= Title ?></title>
 
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -50,11 +50,11 @@
             <a href="../logout.php">Đăng xuất <i class="fa fa-angle-right"></i></a>
         </div>
     </header>
-    <div class="path">Quản lý rút tiền</div>
-    <div class="cmnd">
+    <div class="path">Mở Khóa Tài Khoản</div>
+    <div class="cmnd unlock">
         <div class="list">
             <?php
-                $list = getListWithdrawMoney();
+                $list = getListLocked();
                 if (count($list) == 0) {
                     ?>
                     <p class="not-found-cmnd">Không tìm thấy kết quả</p>
@@ -65,30 +65,25 @@
             ?>
                 <div class="item" id="id_<?= $item['id'] ?>">
                     <div class="top">
-                        <div class="user_id"><?= $item['customer_id'] ?></div>
+                        <div class="user_id"><?= $item['id'] ?></div>
                         <div class="btn">
-                            <div class="agree" id="money-agree">Xác nhận</div>
-                            <div class="cancel" id="money-cancel">Từ chối</div>
+                            <div class="agree" id="unlock-agree">Mở Khóa</div>
                         </div>
                     </div>
                     <div class="bottom">
                         <table>
                             <tbody>
                                 <tr>
-                                    <td>Mã thẻ</td>
-                                    <td><?= $item['card_number'] ?></td>
+                                    <td>Họ tên</td>
+                                    <td><?= $item['full_name'] ?></td>
                                 </tr>
                                 <tr>
-                                    <td>CVV</td>
-                                    <td><?= $item['cvv'] ?></td>
+                                    <td>Email</td>
+                                    <td><?= $item['email'] ?></td>
                                 </tr>
                                 <tr>
-                                    <td>HSD</td>
-                                    <td><?= convertStringToDateFormat($item['expiration_date']); ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Số tiền</td>
-                                    <td><?= number_format($item['amount_of_money']); ?></td>
+                                    <td>SĐT</td>
+                                    <td><?= $item['phone_number'] ?></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -101,6 +96,7 @@
             ?>
             
         </div>
+    </div>
     </div>
 </body>
 </html>
