@@ -872,6 +872,112 @@
         }
     }
 
+    function API_BuyRechargeCard()
+    {
+        if (!isset($_POST['operator']) || !isset($_POST['denominations']) || !isset($_POST['amount']))
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Vui lòng nhập đầy đủ thông tin',
+                'data' => ''
+            ));
+            return;
+        }
+        // Assign value
+        $operator = $_POST['operator'];
+        $denominations = $_POST['denominations'];
+        $amount = $_POST['amount'];
+
+        // Check value operator
+        if ($operator != 0 && $operator != 1 && $operator != 2)
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Nhà mạng không hợp lệ',
+                'data' => ''
+            ));
+            return;
+        }
+
+        // Check value denominations
+        if ($denominations != 10000 && $denominations != 20000 && $denominations != 50000 && $denominations != 100000)
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Mệnh giá không hợp lệ',
+                'data' => ''
+            ));
+            return;
+        }
+
+        // Check value amount
+        if ($amount < 1 || $amount > 5)
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Số lượng không hợp lệ',
+                'data' => ''
+            ));
+            return;
+        }
+
+        // Check money
+        $info = getInformation();
+        if ($info['money'] < $amount * $denominations)
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Không đủ tiền',
+                'data' => ''
+            ));
+            return;
+        }
+
+
+        $list_card = array();
+        $user_id = $_SESSION['user'];
+
+        for ($i = 0; $i < $amount; $i++)
+        {
+            $card_number = '11111';
+            if ($operator == 1)
+            {
+                $card_number = '22222';
+            }
+            else if ($operator == 2)
+            {
+                $card_number = '33333';
+            }
+            $card_number .= random_number(5);
+
+            db_insert('recharge_card', array(
+                'customer_id' => $user_id,
+                'code' => $card_number,
+                'denominations' => $denominations,
+                'operator' => $operator,
+            ));
+            array_push($list_card, $card_number);
+        }
+
+        $update_money = (int)$info['money'] - (int)$amount * $denominations;
+        db_update('customer', array('money' => $update_money), "`id` = '".$user_id."'");
+
+        echo json_encode(array(
+            'status' => true,
+            'message' => 'Mua thẻ cào thành công',
+            'data' => $list_card
+        ));
+    }
+
+    function random_number($length)
+    {
+        $result = '';
+        for ($i = 0; $i < $length; $i++)
+        {
+            $result .= mt_rand(0, 9);
+        }
+        return $result;
+    }
 
 
     function getInformation() {

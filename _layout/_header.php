@@ -38,7 +38,7 @@
             <a href="./recharge_card.php"><i class="fa fa-credit-card"></i><span>Thẻ cào</span></a>
         </div>
         <div class="right">
-            <span><i class="fa fa-dollar"></i><span><?= number_format($info['money']) ?></span></span>
+            <span><i class="fa fa-dollar"></i><span id="my-money"><?= number_format($info['money']) ?></span></span>
             <a href="./">Quản lý tài khoản <i class="fa fa-angle-right"></i></a>
         </div>
     </header>
