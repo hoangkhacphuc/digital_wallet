@@ -185,7 +185,8 @@
         }
 
         $account_abnormal = db_select('abnormal', "`customer_id` = '". $_POST['user'] . "' ORDER BY `date_created` DESC");
-        if (count($account_abnormal) >= 3 && count($account_abnormal) < 6)
+        $num_abnormal = count($account_abnormal);
+        if ($num_abnormal == 3)
         {
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $time_current = date('Y-m-d H:i:s');
@@ -216,9 +217,15 @@
                 db_insert('abnormal', array(
                     'customer_id' => $account_exist[0]['id'],
                 ));
+
+            $message = 'Tài khoản hoặc mật khẩu không chính xác';
+            if ($num_abnormal == 2) 
+                $message = 'Tài khoản của bạn đã bị khóa tạm thời. Vui lòng chờ 1 phút và thực hiện lại';
+            if ($num_abnormal == 5)
+                $message = 'Tài khoản của bạn đã bị khóa vĩnh viễn. Vui lòng liên hệ Admin để mở khóa tài khoản';
             echo json_encode(array(
                 'status' => false,
-                'message' => 'Tài khoản hoặc mật khẩu không chính xác',
+                'message' => $message,
                 'data' => ''
             ));
             return;
