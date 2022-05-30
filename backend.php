@@ -969,6 +969,28 @@
         ));
     }
 
+    function getTotalDeposit()
+    {
+        $user_id = $_SESSION['user'];
+        $total_deposit = db_select_query("SELECT SUM(amount_of_money) as total FROM `depositing` WHERE customer_id = '$user_id' GROUP BY customer_id;");
+        if (count($total_deposit) == 0)
+        {
+            return 0;
+        }
+        return $total_deposit[0]['total'];
+    }
+
+    function getTotalRechargeCard()
+    {
+        $user_id = $_SESSION['user'];
+        $total_recharge_card = db_select_query("SELECT SUM(denominations) as total FROM `recharge_card` WHERE customer_id = '$user_id' GROUP BY customer_id;");
+        if (count($total_recharge_card) == 0)
+        {
+            return 0;
+        }
+        return $total_recharge_card[0]['total'];
+    }
+
     function random_number($length)
     {
         $result = '';
@@ -1038,8 +1060,45 @@
             return;
         $user = $_SESSION['user'];
         $info = db_select_query("SELECT * FROM withdraw_money WHERE customer_id = '$user' ORDER BY date_created DESC LIMIT 50;");
-        return $info;
+        $data = array();
+        foreach ($info as $item) {
+            array_push($data, array(
+                'date_created' => $item['date_created'],
+                'amount_of_money' => $item['amount_of_money'],
+                'confirm' => $item['confirm'],
+                'note' => $item['note'],
+                'type' => 0
+            ));
+        }
+        $info = db_select_query("SELECT * FROM depositing WHERE customer_id = '$user' ORDER BY date_created DESC LIMIT 50;");
+        foreach ($info as $item) {
+            array_push($data, array(
+                'date_created' => $item['date_created'],
+                'amount_of_money' => $item['amount_of_money'],
+                'confirm' => 1,
+                'note' => '',
+                'type' => 1
+            ));
+        }
+        $info = db_select_query("SELECT * FROM recharge_card WHERE customer_id = '$user' ORDER BY date_created DESC LIMIT 50;");
+        foreach ($info as $item) {
+            array_push($data, array(
+                'date_created' => $item['date_created'],
+                'amount_of_money' => $item['denominations'],
+                'confirm' => 1,
+                'note' => 'Nhà mạng: '.($item['operator'] == 0 ? 'Viettel' : ($item['operator'] == 1 ? 'Mobifone' : 'Vinaphone')).'<br>Mã thẻ: '.$item['code'],
+                'type' => 2
+            ));
+        }
+
+        // sort by date_created desc
+        usort($data, function($a, $b) {
+            return strtotime($b['date_created']) - strtotime($a['date_created']);
+        });
+
+        return $data;
     }
+
 
     function getListLocked() {
         if (!isLogin())

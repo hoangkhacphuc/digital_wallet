@@ -10,6 +10,7 @@
 <?php
     $page = "Lịch sử giao dịch";
     require_once ('./_layout/_header.php');
+
 ?>
 <div class="path">Lịch sử giao dịch</div>
 
@@ -17,7 +18,7 @@
     <div class="left">
         <div class="item">
             <div class="title">Nạp tiền</div>
-            <div class="money">0</div>
+            <div class="money"><?= number_format(getTotalDeposit()); ?></div>
         </div>
         <div class="item">
             <div class="title">Chuyển tiền</div>
@@ -31,7 +32,12 @@
             <div class="title">Rút tiền</div>
             <div class="money"><?= number_format(getTotalAmountWithdrawn()); ?></div>
         </div>
+        <div class="item">
+            <div class="title">Khác</div>
+            <div class="money"><?= number_format(getTotalRechargeCard()); ?></div>
+        </div>
     </div>
+
     <div class="right">
         <div class="title">Giao dịch gần đây</div>
         <div class="list">
@@ -51,8 +57,8 @@
                         <div class="note"><?= $item['note'] ?></div>
                     </div>
                     <div class="col">
-                        <div class="sub"><?= number_format($item['amount_of_money']) ?></div>
-                        <div class="action">Rút tiền</div>
+                        <div class="<?= $item['type'] == 1 ? 'add' : 'sub' ?>"><?= number_format($item['amount_of_money']) ?></div>
+                        <div class="action"><?= $item['type'] == 0 ? 'Rút tiền' : ($item['type'] == 1 ? 'Nạp tiền' : 'Mua thẻ cào') ?></div>
                     </div>
                     <div class="col">
                         <div class="status <?= $item['confirm'] == 0 ? '' : ($item['confirm'] == 1 ? 'ok' : 'no') ?>"><?= $item['confirm'] == 0 ? 'Chờ duyệt' : ($item['confirm'] == 1 ? 'Thành công' : 'Bị hủy') ?></div>

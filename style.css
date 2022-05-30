@@ -738,6 +738,10 @@ footer > .row > .copyright {
     border-left: 5px solid #d41616;
 }
 
+.history > .left > .item:nth-child(5) {
+    border-left: 5px solid #ff00c8;
+}
+
 .history > .left > .item > .title {
     font-size: 14px;
     color:#42236a;
