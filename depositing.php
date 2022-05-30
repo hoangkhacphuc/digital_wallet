@@ -8,14 +8,14 @@
 ?>
 
 <?php
-    $page = "Rút tiền";
+    $page = "Nạp tiền";
     require_once ('./_layout/_header.php');
 ?>
 
-<div class="path">Rút tiền</div>
+<div class="path">Nạp tiền</div>
 <div class="withdraw-money">
     <div class="basic">
-        <p>Từ tài khoản</p>
+        <p>Tài khoản</p>
         <div class="user"><?= $info['user'] ?></div>
         <div class="surplus"><?= number_format($info['money']) ?></div>
     </div>
@@ -35,22 +35,8 @@
         <input type="number" id="inp-amount-of-money" placeholder="Số tiền">
         <label for="inp-amount-of-money"><i class="fa fa-dollar"></i></label>
     </div>
-    <div class="list">
-        <div class="item" id="btn-money-1">100,000 VNĐ</div>
-        <div class="item" id="btn-money-2">200,000 VNĐ</div>
-        <div class="item" id="btn-money-3">500,000 VNĐ</div>
-        <div class="item" id="btn-money-4">1,000,000 VNĐ</div>
-        <div class="item" id="btn-money-5">2,000,000 VNĐ</div>
-        <div class="item" id="btn-money-6">5,000,000 VNĐ</div>
-    </div>
-    <div class="note">
-        <input type="text" id="inp-note-withdraw-money" value="<?= $info['full_name']?> chuyen tien" placeholder="Nội dung chuyển tiền">
-    </div>
-    <div class="total">
-        <input type="text" id="inp-total-withdraw-money" value="0" placeholder="Tổng tiền" disabled>
-    </div>
     <div class="btn">
-        <button id="btn-continue-withdraw-money">Tiếp tục</button>
+        <button id="btn-continue-depositing">Tiếp tục</button>
     </div>
 </div>
 

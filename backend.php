@@ -636,6 +636,244 @@
         ));
     }
 
+    function API_Depositing()
+    {
+        if (!isLogin())
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Vui lòng đăng nhập và thực hiện lại',
+                'data' => ''
+            ));
+            return;
+        }
+        if (!isset($_POST['card_number']))
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Vui lòng cung cấp mã thẻ',
+                'data' => ''
+            ));
+            return;
+        }
+        
+        if (!isset($_POST['date']))
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Vui lòng cung cấp ngày',
+                'data' => ''
+            ));
+            return;
+        }
+        if (!isset($_POST['cvv']))
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Vui lòng cung cấp mã CVV',
+                'data' => ''
+            ));
+            return;
+        }
+        if (!isset($_POST['amount']))
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Vui lòng cung cấp số tiền',
+                'data' => ''
+            ));
+            return;
+        }
+
+        $card_number = $_POST['card_number'];
+        $date = $_POST['date'];
+        $cvv = $_POST['cvv'];
+        $amount = $_POST['amount'];
+        
+        // check date format
+        if (!isDate($date))
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Ngày không hợp lệ',
+                'data' => ''
+            ));
+            return;
+        }
+
+        // check card number
+        if (!is_numeric($card_number) || strlen($card_number) != 6)
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Mã thẻ không hợp lệ',
+                'data' => ''
+            ));
+            return;
+        }
+
+        // check cvv
+        if (!is_numeric($cvv) || strlen($cvv) != 3)
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Mã CVV không hợp lệ',
+                'data' => ''
+            ));
+            return;
+        }
+
+        // check amount
+        if (!is_numeric($amount))
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Số tiền không hợp lệ',
+                'data' => ''
+            ));
+            return;
+        }
+
+        // Check amount min 50000
+        if ($amount < 50000)
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Số tiền tối thiểu là 50.000',
+                'data' => ''
+            ));
+            return;
+        }
+
+        if ($card_number == '111111')
+        {
+            if ($date != '2022-10-10')
+            {
+                echo json_encode(array(
+                    'status' => false,
+                    'message' => 'Ngày hết hạn không chính xác',
+                    'data' => ''
+                ));
+                return;
+            }
+            if ($cvv != '411')
+            {
+                echo json_encode(array(
+                    'status' => false,
+                    'message' => 'Mã CVV không chính xác',
+                    'data' => ''
+                ));
+                return;
+            }
+            $user_id = $_SESSION['user'];
+
+            db_insert('depositing', array(
+                'customer_id' => $user_id,
+                'amount_of_money' => $amount,
+                'expiration_date' => $date,
+                'card_number' => $card_number,
+                'cvv' => $cvv,
+            )); 
+
+            $info = getInformation();
+            $update_money = (int)$info['money'] + (int)$amount;
+            db_update('customer', array('money' => $update_money), "`id` = '".$user_id."'");
+
+            echo json_encode(array(
+                'status' => true,
+                'message' => 'Nạp tiền thành công',
+                'data' => ''
+            ));
+        }
+        else if ($card_number == '222222')
+        {
+            if ($date != '2022-11-11')
+            {
+                echo json_encode(array(
+                    'status' => false,
+                    'message' => 'Ngày hết hạn không chính xác',
+                    'data' => ''
+                ));
+                return;
+            }
+            if ($cvv != '443')
+            {
+                echo json_encode(array(
+                    'status' => false,
+                    'message' => 'Mã CVV không chính xác',
+                    'data' => ''
+                ));
+                return;
+            }
+            // check amount max 1000000
+            if ($amount > 1000000)
+            {
+                echo json_encode(array(
+                    'status' => false,
+                    'message' => 'Giới hạn nạp tiền là 1000000',
+                    'data' => ''
+                ));
+                return;
+            }
+
+            $user_id = $_SESSION['user'];
+
+            db_insert('depositing', array(
+                'customer_id' => $user_id,
+                'amount_of_money' => $amount,
+                'expiration_date' => $date,
+                'card_number' => $card_number,
+                'cvv' => $cvv,
+            )); 
+
+            $info = getInformation();
+            $update_money = (int)$info['money'] + (int)$amount;
+            db_update('customer', array('money' => $update_money), "`id` = '".$user_id."'");
+
+            echo json_encode(array(
+                'status' => true,
+                'message' => 'Nạp tiền thành công',
+                'data' => ''
+            ));
+        }
+        else if ($card_number == '333333')
+        {
+            if ($date != '2022-12-12')
+            {
+                echo json_encode(array(
+                    'status' => false,
+                    'message' => 'Ngày hết hạn không chính xác',
+                    'data' => ''
+                ));
+                return;
+            }
+            if ($cvv != '577')
+            {
+                echo json_encode(array(
+                    'status' => false,
+                    'message' => 'Mã CVV không chính xác',
+                    'data' => ''
+                ));
+                return;
+            }
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Thẻ hết tiền',
+                'data' => ''
+            ));
+        }
+        else 
+        {
+            echo json_encode(array(
+                'status' => false,
+                'message' => 'Thẻ này không được hỗ trợ',
+                'data' => ''
+            ));
+        }
+    }
+
+
+
     function getInformation() {
         if (!isLogin())
             return;
@@ -764,4 +1002,8 @@
     {
         return date('d', strtotime($date)). '/' . date('m', strtotime($date)) . '/' . date('Y', strtotime($date)) . ' - ' . date('H', strtotime($date)) . ':' . date('i', strtotime($date)) . ':' . date('s', strtotime($date));
     }
+
+    
+    
+
 ?>

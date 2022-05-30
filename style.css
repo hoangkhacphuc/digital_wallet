@@ -967,4 +967,12 @@ footer > .row > .copyright {
     max-height: 140px;
 }
 
-/* --------------------- START CSS IN ADMIN - UNLOCK PAGE --------------------- */
+/* --------------------- END CSS IN ADMIN - UNLOCK PAGE --------------------- */
+
+/* --------------------- START CSS IN DEPOSITING PAGE --------------------- */
+
+#btn-continue-depositing {
+    margin-top: 30px;
+}
+
+/* --------------------- END CSS IN DEPOSITING PAGE --------------------- */

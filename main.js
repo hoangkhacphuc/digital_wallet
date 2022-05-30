@@ -270,6 +270,45 @@ $(document).ready(function () {
 
     // --------------------- END JS IN WITHDRAW MONEY PAGE ---------------------
 
+    // --------------------- START JS IN DEPOSITING PAGE ---------------------
+
+    $('#btn-continue-depositing').click(function () { 
+
+        let card_number = $('#inp-card-number').val();
+        let expiration_date = $('#inp-expiration-date').val();
+        let CVV = $('#inp-CVV').val();
+        let amount_of_money = $('#inp-amount-of-money').val();
+
+        let data = new FormData();
+        data.append('card_number', card_number);
+        data.append('date', expiration_date);
+        data.append('cvv', CVV);
+        data.append('amount', amount_of_money);
+
+        $.ajax({
+            type: "POST",
+            url: "./backend.php?API=Depositing",
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                let json = JSON.parse(response);
+                if (json['status'])
+                {
+                    toastr.success(json['message'], 'Thông báo');
+                    alert(json['message']);
+                    window.location = "./depositing.php";
+                }
+                else toastr.error(json['message'], 'Thông báo');
+            },
+            error: function () {
+                toastr.error('Xảy ra lỗi trong quá trình truyền tin', 'Thông báo');
+            }
+        });
+    });
+
+    // --------------------- END JS IN DEPOSITING PAGE ---------------------
+
     // --------------------- START JS IN ADMIN- CMND PAGE ---------------------
 
     $('.cmnd>.list>.item>.top>.btn>#cmnd-agree').click(function () { 
@@ -419,5 +458,6 @@ $(document).ready(function () {
     });
 
     // --------------------- END JS IN ADMIN- UNLOCK PAGE ---------------------
+    
 
 });
