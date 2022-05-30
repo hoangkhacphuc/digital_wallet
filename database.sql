@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `digital_wallet` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 CREATE TABLE `customer` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `user` varchar(25) NOT NULL,
